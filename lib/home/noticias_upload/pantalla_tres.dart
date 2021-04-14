@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_login/home/noticias_upload/bloc/upload_bloc.dart';
 import 'package:google_login/models/new.dart';
 
-import 'bloc/my_news_bloc.dart';
 
 class PantallaTres extends StatefulWidget {
   PantallaTres({Key key}) : super(key: key);
@@ -14,7 +14,7 @@ class PantallaTres extends StatefulWidget {
 }
 
 class _PantallaTresState extends State<PantallaTres> {
-  MyNewsBloc newsBloc;
+  UploadBloc _bloc;
   File slectedImage;
   var autorTc = TextEditingController();
   var tituloTc = TextEditingController();
@@ -24,10 +24,10 @@ class _PantallaTresState extends State<PantallaTres> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        newsBloc = MyNewsBloc();
-        return newsBloc;
+        _bloc = UploadBloc();
+        return _bloc;
       },
-      child: BlocConsumer<MyNewsBloc, MyNewsState>(
+      child: BlocConsumer<UploadBloc, UploadState>(
         listener: (context, state) {
           if (state is PickedImageState) {
             slectedImage = state.image;
@@ -111,13 +111,13 @@ class _PantallaTresState extends State<PantallaTres> {
             MaterialButton(
               child: Text("Imagen"),
               onPressed: () {
-                newsBloc.add(PickImageEvent());
+                _bloc.add(PickImageEvent());
               },
             ),
             MaterialButton(
               child: Text("Guardar"),
               onPressed: () {
-                newsBloc.add(
+                _bloc.add(
                   SaveNewElementEvent(
                     noticia: New(
                       author: autorTc.text,
