@@ -50,20 +50,31 @@ class _MisNoticiasState extends State<MisNoticias> {
                     child: CircularProgressIndicator(),
                   );
                 }
-                return ListView(
-                    children: snapshot.data.docs.map(
-                  (DocumentSnapshot document) {
-                    return new ItemNoticia(
-                      noticia: New(
-                        author: document['author'],
-                        title: document['title'],
-                        description: document['description'],
-                        publishedAt: DateTime.parse(document['publishedAt']),
-                        urlToImage: document['urlToImage'],
-                      ),
-                    );
+                return RefreshIndicator(
+                  onRefresh: () async {
+                    ScaffoldMessenger.of(context)
+                      ..hideCurrentSnackBar()
+                      ..showSnackBar(
+                        SnackBar(
+                          content: Text("¡Noticias cargadas!"),
+                        ),
+                      );
                   },
-                ).toList());
+                  child: ListView(
+                      children: snapshot.data.docs.map(
+                    (DocumentSnapshot document) {
+                      return new ItemNoticia(
+                        noticia: New(
+                          author: document['author'],
+                          title: document['title'],
+                          description: document['description'],
+                          publishedAt: DateTime.parse(document['publishedAt']),
+                          urlToImage: document['urlToImage'],
+                        ),
+                      );
+                    },
+                  ).toList()),
+                );
               },
             );
           }
