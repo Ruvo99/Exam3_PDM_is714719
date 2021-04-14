@@ -15,9 +15,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentPageIndex = 0;
   final _titulosList = [
-    "Deportes",
+    "Buscar",
     "Mis noticias",
-    "???",
+    "Nueva noticia",
   ];
   final _pagesList = [
     NoticiasDeportes(),
@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
         },
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.sports_kabaddi),
+            icon: Icon(Icons.search),
             label: "${_titulosList[0]}",
           ),
           BottomNavigationBarItem(
@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
             label: "${_titulosList[1]}",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.thumb_up),
+            icon: Icon(Icons.create),
             label: "${_titulosList[2]}",
           ),
         ],
