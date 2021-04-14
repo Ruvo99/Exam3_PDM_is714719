@@ -1,13 +1,12 @@
-# App 15
+# Examen 3 IS714719
 
-App intro para utilizar un BaaS.
-- Autenticacion con firebase
-- Configuracion del proyecto
-- Autenticacion con redes sociales
-- Usuarios anonimos
---------------------------
-- Firebase firestore NoSQL
-- Firebase storage (files)
+Este examen contendr+a los siguientes temas:
+-BaaS: Conexión, autenticación, almacenamiento, BD noSQL en Firebase
+-Estados: BLoC
+-Requests: HTTP requests, API externa
+-Alertas: Dialogs, Snackbars
+-Persistencia de datos: Almacenamiento local, Hive
+
 
 ## Getting Started
 
@@ -16,13 +15,3 @@ Recuerda que despues de clonar el proyecto, abrir una terminal dentro de la carp
 ```sh
 flutter packages get
 ``` 
-
-## App Screenshot
-
-
-<img src="screenshot/Capture0.PNG" width="240" height="480" />
-<img src="screenshot/Capture1.PNG" width="240" height="480" />
-<img src="screenshot/Capture2.PNG" width="240" height="480" />
-<img src="screenshot/Capture3.PNG" width="240" height="480" />
-<img src="screenshot/Capture4.PNG" width="240" height="480" />
-
