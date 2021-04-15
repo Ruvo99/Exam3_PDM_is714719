@@ -7,19 +7,22 @@ class ItemNoticia extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-// TODO: Cambiar image.network por Extended Image con place holder en caso de error o mientras descarga la imagen
     return Container(
       child: Padding(
         padding: EdgeInsets.all(6.0),
         child: Card(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           child: Row(
             children: [
               Expanded(
                 flex: 1,
-                child: Image.network(
-                  "${noticia.urlToImage}",
-                  height: 100,
-                  fit: BoxFit.cover,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.network(
+                    "${noticia.urlToImage}",
+                    height: MediaQuery.of(context).size.height / 6,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               Expanded(

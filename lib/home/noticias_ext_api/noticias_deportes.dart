@@ -103,6 +103,7 @@ class SearchBar extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
+            flex: 6,
             child: TextField(
               controller: query,
               decoration: InputDecoration(
@@ -110,11 +111,17 @@ class SearchBar extends StatelessWidget {
               ),
             ),
           ),
-          MaterialButton(child:Text('Search'),onPressed: () {
-            BlocProvider.of<SearchingBloc>(context).add(
-              RequestWithQueryEvent(query: query.text),
-            );
-          })
+          Expanded(
+            flex: 1,
+            child: MaterialButton(
+              child: Icon(Icons.search),
+              onPressed: () {
+                BlocProvider.of<SearchingBloc>(context).add(
+                  RequestWithQueryEvent(query: query.text),
+                );
+              },
+            ),
+          )
         ],
       ),
     );
