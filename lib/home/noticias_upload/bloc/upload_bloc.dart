@@ -87,9 +87,13 @@ class UploadBloc extends Bloc<UploadEvent, UploadState> {
         await _saveNoticias(event.noticia.copyWith(urlToImage: imageUrl));
         // yield LoadedNewsState(noticiasList: await _getNoticias() ?? []);
         yield SavedNewState();
-      } else {
-        yield ErrorMessageState(errorMsg: "No se pudo guardar la imagen");
       }
+    } else if (event is SaveNewsApiEvent) {
+      yield(LoadingState());
+      await _saveNoticias(event.noticia);
+      yield SavedNewsApiState();
+    } else {
+      yield ErrorMessageState(errorMsg: "No se pudo guardar la imagen");
     }
   }
 }

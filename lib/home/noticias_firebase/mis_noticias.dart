@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_login/home/noticias_ext_api/item_noticia.dart';
+import 'package:google_login/home/noticias_firebase/item_noticia_fb.dart';
 import 'package:google_login/models/new.dart';
 
 import 'bloc/my_news_bloc.dart';
@@ -63,7 +63,7 @@ class _MisNoticiasState extends State<MisNoticias> {
                   child: ListView(
                       children: snapshot.data.docs.map(
                     (DocumentSnapshot document) {
-                      return new ItemNoticia(
+                      return new ItemNoticiaFB(
                         noticia: New(
                           author: document['author'],
                           title: document['title'],

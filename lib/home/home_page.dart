@@ -7,6 +7,8 @@ import 'package:google_login/home/noticias_firebase/mis_noticias.dart';
 import 'noticias_ext_api/noticias_deportes.dart';
 import 'package:google_login/home/noticias_upload/pantalla_tres.dart';
 
+import 'noticias_upload/bloc/upload_bloc.dart';
+
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
 
@@ -35,6 +37,9 @@ class _HomePageState extends State<HomePage> {
         ),
         BlocProvider(
           create: (context) => MyNewsBloc()..add(RequestAllNewsEvent()),
+        ),
+        BlocProvider(
+          create: (context) => UploadBloc()..add(InitialUploadEvent()),
         ),
       ],
       child: Scaffold(
